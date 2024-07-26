@@ -59,7 +59,7 @@ import sys
 import math
 # import time
 
-import qwiic_i2c
+import Qwiic.qwiic_i2c as qwiic_i2c
 
 from . import oled_fonts
 from . import oled_logos
@@ -442,14 +442,14 @@ class QwiicOledBase(object):
             :return: No return value
 
         """
-
+        
         # a list or array? If not, make it one
         if not hasattr(text, '__len__'): # scalar?
             text = str(text)
 
         if isinstance(text, str):
-            text = bytearray(text, encoding='ascii')
-
+            text = text.encode()
+            
         for curr in text:
             self.write(curr)
 

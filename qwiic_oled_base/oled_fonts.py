@@ -54,7 +54,7 @@ _fontCache=None
 
 _isInited = False
 
-
+OS_SEP = '/'
 
 #-----------------------------------------
 # Font Object - to manage a font
@@ -147,7 +147,7 @@ class OLEDFont():
 
 def _getFontDir():
 
-	return __file__.rsplit(os.sep, 1)[0] +  os.sep + "fonts"
+	return __file__.rsplit(OS_SEP, 1)[0] +  OS_SEP + "fonts"
 
 #-----------------------------------------
 # General Structure
@@ -234,7 +234,7 @@ def get_font(iFont):
 
 	if iFont != _fontCacheIndex:
 
-		fFont = _getFontDir() + os.sep + str(iFont) + '_' + _fontIndexMap[iFont] + '.bin'
+		fFont = _getFontDir() + OS_SEP + str(iFont) + '_' + _fontIndexMap[iFont] + '.bin'
 
 		_fontCache = OLEDFont(fFont)
 		_fontCacheIndex = iFont
